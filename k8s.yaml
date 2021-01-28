@@ -1,21 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jenkins-demo
-  namespace: default
+  name: jenkins-app-demo
+  namespace: jenkins
 spec:
   selector:
     matchLabels:
-      app: jenkins-demo
+      app: jenkins-app-demo
   template:
     metadata:
       labels:
-        app: jenkins-demo
+        app: jenkins-app-demo
     spec:
       containers:
-      - image: cnych/jenkins-demo:<BUILD_TAG>
+      - image: yexia/jenkins-demo:test
         imagePullPolicy: IfNotPresent
-        name: jenkins-demo
-        env:
-        - name: branch
-          value: <BRANCH_NAME>
+        name: jenkins-app-demo
